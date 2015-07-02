@@ -31,4 +31,6 @@ for root in roots:
     for f in files:
       path = current_dir + "/" + f
       if f == hook and os.path.isfile(path) and os.access(path, os.X_OK):
-        os.system(path + " " + arguments)
+        exit_code = os.system(path + " " + arguments)
+        if exit_code != 0:
+          sys.exit(exit_code)

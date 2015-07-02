@@ -27,7 +27,7 @@ roots = sorted(roots)
 # Search the roots for scripts with the same name as the hook and
 # run it with the given arguments
 for root in roots:
-  for current_dir, _, files in os.walk(root, followlinks=True):
+  for current_dir, _, files in os.walk(hook_dir + '/' + root, followlinks=True):
     for f in files:
       path = current_dir + "/" + f
       if f == hook and os.path.isfile(path) and os.access(path, os.X_OK):

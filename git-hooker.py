@@ -28,6 +28,8 @@ roots = sorted(roots)
 # run it with the given arguments
 for root in roots:
   for current_dir, _, files in os.walk(hook_dir + '/' + root, followlinks=True):
+    if current_dir.count(".git") > 1:
+      continue
     for f in files:
       path = current_dir + "/" + f
       if f == hook and os.path.isfile(path) and os.access(path, os.X_OK):
